@@ -51,7 +51,7 @@ CREATE TABLE bronze.bowling_scorecard (
     innings         INT,
     bowling_team    NVARCHAR(50),
     bowler          NVARCHAR(50),
-    overs           INT,
+    overs           FLOAT,
     balls           INT,
     runs_conceded   INT,
     wickets         INT,
@@ -86,7 +86,7 @@ CREATE TABLE bronze.deliveries_ballbyball (
     runs_extra      INT,
     runs_total      INT,
     extra_detail    NVARCHAR(50),
-    wickets         NVARCHAR(50)
+    wickets         VARCHAR(MAX)
 );
 GO
 
@@ -116,34 +116,35 @@ GO
 -- DESCRIPTION:
 -- Stores match-level metadata including teams, venue, result, and event details
 -- ============================================================================
-IF OBJECT_ID('bronze.matches', 'U') IS NOT NULL
-    DROP TABLE bronze.matches;
+
+
+DROP TABLE IF EXISTS bronze.matches;
 GO
 
 CREATE TABLE bronze.matches (
-    match_id            INT,
-    season              INT,
-    match_date          DATE,
-    city                NVARCHAR(50),
-    venue               NVARCHAR(200),
-    team1               NVARCHAR(50),
-    team2               NVARCHAR(50),
-    teams               NVARCHAR(100),
-    toss_winner         NVARCHAR(50),
-    toss_decision       NVARCHAR(20),
-    winner              NVARCHAR(50),
-    result              NVARCHAR(50),
-    win_by_runs         INT,
-    win_by_wickets      INT,
-    method              NVARCHAR(20),
-    player_of_match     NVARCHAR(50),
-    umpire1             NVARCHAR(50),
-    umpire2             NVARCHAR(50),
-    overs               INT,
-    balls_per_over      INT,
-    match_type          NVARCHAR(50),
-    event_name          NVARCHAR(50),
-    event_stage         NVARCHAR(50),
-    event_match_number  INT
+    match_id            NVARCHAR(50),
+    season              NVARCHAR(50),
+    match_date          NVARCHAR(50),
+    city                NVARCHAR(100),
+    venue               NVARCHAR(300),
+    team1               NVARCHAR(100),
+    team2               NVARCHAR(100),
+    teams               NVARCHAR(200),
+    toss_winner         NVARCHAR(100),
+    toss_decision       NVARCHAR(50),
+    winner              NVARCHAR(100),
+    result              NVARCHAR(100),
+    win_by_runs         NVARCHAR(50),
+    win_by_wickets      NVARCHAR(50),
+    method              NVARCHAR(50),
+    player_of_match     NVARCHAR(100),
+    umpire1             NVARCHAR(100),
+    umpire2             NVARCHAR(100),
+    overs               NVARCHAR(50),
+    balls_per_over      NVARCHAR(50),
+    match_type          NVARCHAR(100),
+    event_name          NVARCHAR(200),
+    event_stage         NVARCHAR(100),
+    event_match_number  NVARCHAR(100)
 );
 GO
