@@ -156,14 +156,9 @@ BEGIN
             BULK INSERT bronze.matches
             FROM 'D:\IPL\matches.csv'
             WITH (
-                FIRSTROW = 2,
-                FIELDTERMINATOR = ',',
-                ROWTERMINATOR = '\n',
-                FIELDQUOTE = '"',
-                CODEPAGE = '65001',
-                TABLOCK,
-                MAXERRORS = 1000
-            );
+                FIRSTROW=2,
+                FIELDTERMINATOR=',',
+                TABLOCK)
 
             SET @end_time = GETDATE();
             PRINT '>> Load Duration: ' 
