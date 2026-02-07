@@ -98,7 +98,7 @@ BEGIN
 
             PRINT '>> Inserting Data Into: bronze.deliveries_ballbyball';
             BULK INSERT bronze.deliveries_ballbyball
-            FROM 'D:\IPL\deliveries_ball_by_ball.csv'
+            FROM 'D:\IPL\deliveries_ball_by_ball_corrected.csv'
             WITH (
                 FIRSTROW = 2,
                 FIELDTERMINATOR = ',',
@@ -154,11 +154,18 @@ BEGIN
 
             PRINT '>> Inserting Data Into: bronze.matches';
             BULK INSERT bronze.matches
-            FROM 'D:\IPL\matches.csv'
+            FROM 'D:\IPL\matches_fixed_full1170.csv'
             WITH (
-                FIRSTROW=2,
-                FIELDTERMINATOR=',',
-                TABLOCK)
+                FIRSTROW = 2,
+                FIELDTERMINATOR = ',',
+                ROWTERMINATOR = '0x0a',
+                CODEPAGE = '65001',
+                FORMAT = 'CSV',
+                FIELDQUOTE = '"',
+                KEEPNULLS,
+                TABLOCK
+            )
+
 
             SET @end_time = GETDATE();
             PRINT '>> Load Duration: ' 
@@ -186,3 +193,5 @@ BEGIN
         PRINT '==========================================';
     END CATCH
 END;
+
+
