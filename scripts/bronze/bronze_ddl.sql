@@ -122,9 +122,9 @@ DROP TABLE IF EXISTS bronze.matches;
 GO
 
 CREATE TABLE bronze.matches (
-    match_id            NVARCHAR(50),
-    season              NVARCHAR(50),
-    match_date          NVARCHAR(50),
+    match_id            int,
+    season              nvarchar(50),
+    match_date          nvarchar(50),
     city                NVARCHAR(100),
     venue               NVARCHAR(300),
     team1               NVARCHAR(100),
@@ -134,17 +134,17 @@ CREATE TABLE bronze.matches (
     toss_decision       NVARCHAR(50),
     winner              NVARCHAR(100),
     result              NVARCHAR(100),
-    win_by_runs         NVARCHAR(50),
-    win_by_wickets      NVARCHAR(50),
+    win_by_runs         nvarchar(50),
+    win_by_wickets      nvarchar(50),
     method              NVARCHAR(50),
     player_of_match     NVARCHAR(100),
     umpire1             NVARCHAR(100),
     umpire2             NVARCHAR(100),
-    overs               NVARCHAR(50),
-    balls_per_over      NVARCHAR(50),
+    overs               int,
+    balls_per_over      int,
     match_type          NVARCHAR(100),
     event_name          NVARCHAR(200),
     event_stage         NVARCHAR(100),
-    event_match_number  NVARCHAR(100)
+    event_match_number  nvarchar(50)
 );
 GO
